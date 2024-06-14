@@ -26,9 +26,9 @@ methods: {
             query: searchString,
             }
         })
-        .then(function (response) {
+        .then((response) => {
             console.log(response)
-            store.movieList = store.data.results;
+            this.store.movieList = response.data.results;
         })
         .catch(function (error) {
             console.log(error);
