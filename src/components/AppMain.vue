@@ -27,18 +27,18 @@ methods: {
             }
         })
         .then((response) => {
-            console.log(response)
+            // console.log(response)
             this.store.movieList = response.data.results;
         })
         .catch(function (error) {
             console.log(error);
-        });  
+        })
+        ;  
     }
 }}
 </script>
 
 <template>
-    <h1>ciao da AppMain</h1>
     <AppSearch @searched="searchMovie"/>
     <AppMovieList/>
 </template>
