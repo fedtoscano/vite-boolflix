@@ -7,6 +7,7 @@ return {
 </script>
 
 <template>
+    <h1>ciao da AppHeader</h1>
 </template>
 
 <style scoped>
