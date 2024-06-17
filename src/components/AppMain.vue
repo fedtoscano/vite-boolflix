@@ -19,6 +19,7 @@ return {
 },
 methods: {
     searchMovie(searchString){
+        //chiamata per i film
         console.log(searchString)
         axios.get('https://api.themoviedb.org/3/search/movie', {
             params: {
@@ -27,13 +28,23 @@ methods: {
             }
         })
         .then((response) => {
-            // console.log(response)
             this.store.movieList = response.data.results;
         })
         .catch(function (error) {
             console.log(error);
+        });
+        
+        //chiamata per le serie tv
+        axios.get("https://api.themoviedb.org/3/search/tv", {
+            params:{
+                api_key: "ff07d065bccfc4f4e1b8022ceb9484c2",
+                query: searchString,
+            }
         })
-        ;  
+        .then((response) =>{
+            console.log(response)
+            this.store.tvShowsList = response.data.results
+        })
     }
 }}
 </script>

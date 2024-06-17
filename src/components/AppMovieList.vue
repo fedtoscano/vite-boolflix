@@ -13,12 +13,23 @@ computer(){
 </script>
 
 <template>
+    <h2>MOVIE LIST</h2>
     <ul>
         <li v-for="movie in store.movieList">
             <p>{{ movie.title }}</p>
             <p>{{ movie.original_title }}</p>
             <span class="lang-icon" :class="`lang-icon-${movie.original_language}`"></span>
             <p>{{ movie.vote_average }}</p>
+        </li>
+    </ul>
+
+    <h2>TV SHOWS LIST</h2>
+    <ul>
+        <li v-for="show in store.tvShowsList">
+            <p>{{ show.name }}</p>
+            <p>{{ show.original_name }}</p>
+            <span class="lang-icon" :class="`lang-icon-${show.original_language}`"></span>
+            <p>{{ show.vote_average }}</p>
         </li>
     </ul>
 </template>
