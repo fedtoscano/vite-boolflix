@@ -1,13 +1,33 @@
 <script>
 import {store} from "../store";
+// import {library} from "../../node_modules/@fortawesome/fontawesome-free"
+
+// import { FontAwesomeIcon } from '../fortawesome/vue-fontawesome' 
+import { FontAwesomeIcon } from '../../node_modules/@fortawesome/vue-fontawesome' 
+// import { byPrefixAndName } from '@awesome.me/kit-KIT_CODE/icons'
+// import { byPrefixAndName } from '../../node_modules/@fortawesome/fontawesome-free'
+
 
 export default {
 data() {
 return {  
     store,
+    FontAwesomeIcon,
+    // byPrefixAndName,
+    // library
 }
 },
-computer(){
+methods: {
+    displayVoteAverage: function(voteValue){
+        const newVote =  Math.ceil(voteValue / 2);
+        let voteString = "";
+        for (let index = 0; index < newVote; index++) {
+            voteString += `<font-awesome-icon :icon="['fas', 'star']/>`
+        }
+        return voteString;
+    }
+},
+computed(){
     
 }}
 </script>
@@ -19,7 +39,7 @@ computer(){
             <p>{{ movie.title }}</p>
             <p>{{ movie.original_title }}</p>
             <span class="lang-icon" :class="`lang-icon-${movie.original_language}`"></span>
-            <p>{{ movie.vote_average }}</p>
+            <p>{{ displayVoteAverage(movie.vote_average) }}</p>
             <img :src="`https://image.tmdb.org/t/p/w185${movie.poster_path}`" alt="">
         </li>
     </ul>
