@@ -42,28 +42,26 @@ computed(){
                                 />
                             </div>
                     </div>
-
                 </div>
-                <!-- <img :src="`https://image.tmdb.org/t/p/w185${movie.poster_path}`" alt=""> -->
             </li>
         </ul>
     
         <h2>TV SHOWS LIST</h2>
         <ul>
-            <li v-for="show in store.tvShowsList">
-                <p>{{ show.name }}</p>
-                <p>{{ show.original_name }}</p>
-                <span class="lang-icon" :class="`lang-icon-${show.original_language}`"></span>
-                <!-- <p>{{ show.vote_average }}</p> -->
-                <div class="stars-container">
-                        <font-awesome-icon v-for="(icon, index) in displayVoteAverage(show.vote_average)"
-                            :key="index"
-                            :icon="icon"
-                            class="star-icon"
-                        />
+            <li v-for="show in store.tvShowsList" >
+                <div class="list-item" :style="{ backgroundImage: `url(https://image.tmdb.org/t/p/w342${show.poster_path})`}">
+                    <div class="item-info">
+                        <p>{{ show.name }}</p>
+                        <p>{{ show.original_name }}</p>
+                        <span class="lang-icon" :class="`lang-icon-${show.original_language}`"></span>
+                            <div class="stars-container">
+                                <font-awesome-icon v-for="(icon, index) in displayVoteAverage(show.vote_average)"
+                                    :key="index"
+                                    :icon="icon"
+                                    class="star-icon"
+                                />
+                            </div>
                     </div>
-                <div class="img-container">
-                    <img :src="`https://image.tmdb.org/t/p/w185${show.poster_path}`" alt="">
                 </div>
             </li>
         </ul>
