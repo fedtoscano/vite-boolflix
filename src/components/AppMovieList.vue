@@ -20,6 +20,7 @@ computer(){
             <p>{{ movie.original_title }}</p>
             <span class="lang-icon" :class="`lang-icon-${movie.original_language}`"></span>
             <p>{{ movie.vote_average }}</p>
+            <img :src="`https://image.tmdb.org/t/p/w185${movie.poster_path}`" alt="">
         </li>
     </ul>
 
@@ -30,6 +31,8 @@ computer(){
             <p>{{ show.original_name }}</p>
             <span class="lang-icon" :class="`lang-icon-${show.original_language}`"></span>
             <p>{{ show.vote_average }}</p>
+            <img :src="`https://image.tmdb.org/t/p/w185${show.poster_path}`" alt="">
+
         </li>
     </ul>
 </template>
