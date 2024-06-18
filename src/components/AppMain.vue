@@ -1,8 +1,8 @@
 <script>
-import axios from "axios"
+import axios from "axios";
 import {store} from "../store";
-import AppSearch from "./AppSearch.vue"
-import AppMovieList from "./AppMovieList.vue"
+import AppSearch from "./AppSearch.vue";
+import AppMovieList from "./AppMovieList.vue";
 
 
 export default {
@@ -51,10 +51,20 @@ methods: {
 </script>
 
 <template>
-    <AppSearch @searched="searchMovie"/>
-    <AppMovieList/>
+
+            <AppSearch @searched="searchMovie"/>
+            <AppMovieList/>
+
 </template>
 
 <style scoped lang="scss">
+@use "../style/general.scss";
+.container{
+    color: white;
+    .main-container{
+        max-width: 1200px;
+    margin: 0 auto;
+    }
+}
 
 </style>

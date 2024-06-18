@@ -16,12 +16,21 @@ methods: {
 </script>
 
 <template>
-    <div class="search-container">
-        <label for="research-input">Type your request</label>
-        <input type="text" name="research-input" id="research-input" v-model="researchString">
-        <button @click="makeResearch">Search</button>
+    <div class="container">
+        <div class="search-container">
+            <input type="text" name="research-input" id="research-input" v-model="researchString" placeholder="Search...">
+            <button @click="makeResearch">Search</button>
+        </div>
     </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
+.container{
+    display: flex;
+    justify-content: end;
+    gap: 1em;
+    width: 30%;
+    margin: 3em;
+    margin-bottom: 2em;
+}
 </style>

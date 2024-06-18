@@ -14,9 +14,15 @@ return {
 </script>
 
 <template>
-  <AppHeader/>
-  <AppMain/>
+  <div class="container">
+    <AppHeader/>
+    <AppMain/>
+  </div>
 </template>
 
-<style scoped>
+<style lang="scss">
+@use "./style/general.scss";
+.container{
+    background-color: rgb(92, 83, 83);
+}
 </style>
