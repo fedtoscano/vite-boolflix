@@ -8,7 +8,7 @@ export default {
 data() {
 return {  
     store,
-    castList: []
+    castList: {}
 
 }
 },
@@ -22,7 +22,7 @@ methods: {
         }
         return voteStars;
     },
-    getCredits: function(id){
+    getCredits: function(id, index){
         axios.get(`https://api.themoviedb.org/3/movie/${id}/credits`, {
             params: {
                 api_key: "ff07d065bccfc4f4e1b8022ceb9484c2",
@@ -31,19 +31,25 @@ methods: {
         .then((response) => {
             // console.log(response.data.cast)
             let displayCast = response.data.cast.slice(0, 5);
-            this.$set(this.castLists, id, displayCast.map(castMember => castMember.original_name));
-            console.log(displayCast)
+            this.castList[index] = []
+            this.castList[index] = displayCast
+            console.log(this.castList)
+            // this.$set(this.castLists, id, displayCast.map(castMember => castMember.original_name));
+            
         })
         .catch( (error) => {
             console.log(error);
         });
     }
 },
+
 mounted(){
-    this.store.movieList.forEach(movie =>{
-        this.getCredits(movie.id)
+    this.store.movieList.forEach((movie, movieIndex) =>{
+        this.getCredits(movie.id, movieIndex)
+        console.log(movie, movieIndex)
     })
 }
+
 }
 </script>
 
@@ -52,15 +58,16 @@ mounted(){
     <div class="container">
         <h2>MOVIE LIST</h2>
         <ul>
-            <li v-for="movie in store.movieList" >
+            <li v-for="(movie, movieIndex) in store.movieList" :key="movieIndex">
                 <div class="list-item" :style="{ backgroundImage: `url(https://image.tmdb.org/t/p/w342${movie.poster_path})`}">
                     <div class="item-info">
 
                         <p>{{ movie.title }}</p>
                         <p>{{ movie.original_title }}</p>
-                        <p v-for="(castMember, index) in castList[movie.id]" :key="index">
-                            {{ castMember }}
-                            </p>
+
+                        <p v-for="(castMember, index) in castList[movieIndex]" :key="index">
+                        {{ castMember.name }}
+                        </p>
 
                         <span class="lang-icon" :class="`lang-icon-${movie.original_language}`"></span>
 

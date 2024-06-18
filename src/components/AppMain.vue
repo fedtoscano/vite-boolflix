@@ -20,7 +20,7 @@ return {
 methods: {
     searchMovie(searchString){
         //chiamata per i film
-        console.log(searchString)
+        // console.log(searchString)
         axios.get('https://api.themoviedb.org/3/search/movie', {
             params: {
             api_key: "ff07d065bccfc4f4e1b8022ceb9484c2",
@@ -28,7 +28,7 @@ methods: {
             }
         })
         .then((response) => {
-            console.log(response.data.results)
+            // console.log(response.data.results)
             this.store.movieList = response.data.results;
         })
         .catch(function (error) {
@@ -43,7 +43,7 @@ methods: {
             }
         })
         .then((response) =>{
-            console.log(response.data.results)
+            // console.log(response.data.results)
             this.store.tvShowsList = response.data.results
         })
     }
